@@ -3,5 +3,56 @@
     ViewBag.Title = "UserAccounts";
 }
 
-<h2>UserAccounts</h2>
+<section class="content">
+    <div class="container-fluid">
+
+
+        <!-- general form elements -->
+        <div class="card card-warning">
+            <div class="card-header">
+                <h3 class="card-title">User Accounts</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <input type="text" class="form-control" id="txtFullName" placeholder="Enter Full Name">
+                            </div>
+                            <div class="form-group">
+                                <label>Contact No</label>
+                                <input type="text" class="form-control" id="txtContactNo" placeholder="Contact No">
+                            </div>
+                            <div class="form-group">
+                                <label>User name</label>
+                                <input type="text" class="form-control" id="txtUserName" placeholder="Username">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="text" class="form-control" id="txtPassword" placeholder="Enter Password">
+                            </div>
+                            <div class="form-group ml-4">
+                                <input type="checkbox" class="form-check-input" id="chkActive">
+                                <label class="form-check-label">Check me out</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <button type="button" class="btn btn-success">Save</button>
+                    <button type="button" class="btn btn-info">Update</button>
+                </div>
+            </form>
+        </div>
+
+
+    </div><!-- /.container-fluid -->
+</section>
 
