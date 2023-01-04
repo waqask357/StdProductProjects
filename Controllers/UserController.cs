@@ -1,4 +1,6 @@
-﻿using System;
+﻿using StdProductProjects.Data;
+using StdProductProjects.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +14,11 @@ namespace StdProductProjects.Controllers
         public ActionResult UserAccounts()
         {
             return View();
+        }
+
+        public void saveUser(UserModel model)
+        {
+            db.saveUser(model);
         }
     }
 }

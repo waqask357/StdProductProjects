@@ -38,7 +38,7 @@
                             </div>
                             <div class="form-group ml-4">
                                 <input type="checkbox" class="form-check-input" id="chkActive">
-                                <label class="form-check-label">Check me out</label>
+                                <label class="form-check-label">Is Active</label>
                             </div>
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                    <button type="button" class="btn btn-success">Save</button>
+                    <button type="button" class="btn btn-success" id="btnSave">Save</button>
                     <button type="button" class="btn btn-info">Update</button>
                 </div>
             </form>
@@ -56,3 +56,83 @@
     </div><!-- /.container-fluid -->
 </section>
 
+@*page load*@ 
+<script type="text/javascript">
+    window.onload = function () {
+        $('#txtFullName').focus();
+    }
+</script>
+
+@*Save User*@
+<script type="text/javascript">
+        $("#btnSave").click(function () {
+
+            var FullName, ContactNo, Username, Password, IsActive;
+
+            FullName = $('#txtFullName').val();
+            ContactNo = $('#txtContactNo').val();
+            Username = $('#txtUserName').val();
+            Password = $('#txtPassword').val();
+            IsActive = false;
+            debugger;
+
+
+            if ($('#chkActive').is(":checked")) {
+                IsActive = true;
+            }
+
+            if (FullName == '') {
+                alert('Enter full name!!!');
+                $('#txtFullName').focus();
+            }
+            else if (ContactNo == '') {
+                alert('Enter contact number!!!');
+                $('#txtContactNo').focus();
+            }
+            else if (Username == '') {
+                alert('Enter username!!!');
+                $('#txtUserName').focus();
+            }
+            else if (Password == '') {
+                alert('Enter password!!!');
+                $('#txtPassword').focus();
+            }
+            else {
+                if (confirm('Do you want to Save???')) {
+                    debugger;
+
+                    obj = {
+                        FullName: FullName,
+                        ContactNo: ContactNo,
+                        Username: Username,
+                        Password: Password,
+                        IsActive: IsActive
+                    };
+
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("saveUser", "User")',
+                        data: JSON.stringify(obj),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+
+                        success: function (response) {
+                            var data = response.d;
+                            data = JSON.parse(data);
+                            if (data == true) {
+                                alert('Department Saved!!!');
+                                Clear_Controls();
+                                getDepartments();
+                            }
+                            else {
+                                alert('This Department already saved!!!');
+                            }
+                        }
+                    });
+                }
+                 }
+
+        });
+
+
+</script>
